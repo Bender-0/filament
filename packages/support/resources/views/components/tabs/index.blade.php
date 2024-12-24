@@ -1,5 +1,6 @@
 @props([
     'contained' => false,
+    'vertical' => false,
     'label' => null,
 ])
 
@@ -13,6 +14,7 @@
             ->class([
                 'fi-tabs',
                 'fi-contained' => $contained,
+                'flex-col' => $vertical,
             ])
     }}
 >

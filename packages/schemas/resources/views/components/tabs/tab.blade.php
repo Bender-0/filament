@@ -3,12 +3,14 @@
     $key = $getKey(isAbsolute: false);
     $tabs = $getContainer()->getParentComponent();
     $isContained = $tabs->isContained();
+    $isVertical = $tabs->isVertical();
     $livewireProperty = $tabs->getLivewireProperty();
 
     $activeTabClasses = \Illuminate\Support\Arr::toCssClasses([
         'fi-active',
         'p-6' => $isContained,
         'mt-6' => ! $isContained,
+        'flex-1 px-6' => $isVertical,
     ]);
 
     $inactiveTabClasses = 'invisible absolute h-0 overflow-hidden p-0';

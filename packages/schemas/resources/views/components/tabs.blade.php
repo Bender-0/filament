@@ -2,6 +2,7 @@
     use Filament\Schemas\Components\Tabs\Tab;
 
     $isContained = $isContained();
+    $isVertical = $isVertical();
     $livewireProperty = $getLivewireProperty();
     $renderHookScopes = $getRenderHookScopes();
 @endphp
@@ -66,8 +67,9 @@
                 ->merge($getExtraAttributes(), escape: false)
                 ->merge($getExtraAlpineAttributes(), escape: false)
                 ->class([
-                    'fi-fo-tabs flex flex-col',
+                    'fi-fo-tabs',
                     'fi-contained rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10' => $isContained,
+                    'flex' => $isVertical,
                 ])
         }}
     >
@@ -83,7 +85,7 @@
             x-ref="tabsData"
         />
 
-        <x-filament::tabs :contained="$isContained" :label="$getLabel()">
+        <x-filament::tabs :contained="$isContained" :vertical="$isVertical" :label="$getLabel()">
             @foreach ($getStartRenderHooks() as $startRenderHook)
                 {{ \Filament\Support\Facades\FilamentView::renderHook($startRenderHook, scopes: $renderHookScopes) }}
             @endforeach
